@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:my_basic_notes/shared/app_colors.dart';
 import 'package:my_basic_notes/shared/app_text_styles.dart';
 
@@ -46,7 +47,7 @@ class _AppTextFieldState extends State<AppTextField> {
             keyboardType: widget.keyboardType,
             obscureText: widget.isPassword ? _obscureText : false,
             style: AppTextStyles.baseRegular.copyWith(color: AppColors.blue800),
-            
+
             decoration: InputDecoration(
               contentPadding: EdgeInsets.all(10.w.h),
               hintText: "Masukkan ${widget.label.toLowerCase()}",
@@ -77,8 +78,8 @@ class _AppTextFieldState extends State<AppTextField> {
                       _obscureText = !_obscureText;
                     });
                   }, 
-                  icon: Icon(
-                    _obscureText ? Icons.visibility_off : Icons.visibility
+                  icon: SvgPicture.asset(
+                    _obscureText ? 'assets/icons/eye_off.svg' : 'assets/icons/eye_on.svg'
                   ))
                   : null,
             ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_basic_notes/shared/app_text_styles.dart';
-import 'package:my_basic_notes/shared/widgets/input_field.dart';
+import 'package:my_basic_notes/shared/widgets/app_text_field.dart';
 
 class LoginPage extends StatefulWidget{
   
