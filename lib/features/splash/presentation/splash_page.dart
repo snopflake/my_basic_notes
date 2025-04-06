@@ -42,11 +42,7 @@ class _SplashPageState extends State<SplashPage> {
 
             Text(
               "My Basic Notes",
-              style: TextStyle(
-                fontFamily: 'Inter',
-                fontSize: 25,
-                fontWeight: FontWeight.w700
-              ),
+              style: AppTextStyles.h2Bold
             ),
 
             SizedBox(height: 18.h,),
