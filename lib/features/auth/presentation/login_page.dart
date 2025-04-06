@@ -1,7 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_basic_notes/shared/app_colors.dart';
 import 'package:my_basic_notes/shared/app_text_styles.dart';
+import 'package:my_basic_notes/shared/widgets/app_button.dart';
 import 'package:my_basic_notes/shared/widgets/app_text_field.dart';
 
 class LoginPage extends StatefulWidget{
@@ -39,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               
-              SizedBox(height: 130.h,),
+              SizedBox(height: 100.h,),
           
               Text(
                 "Daftar",
@@ -83,10 +85,38 @@ class _LoginPageState extends State<LoginPage> {
                 isPassword: true,
               ),
 
+              SizedBox(height: 80.h,),
 
+              AppButton(
+                text: "Daftar", 
+                onPressed: () {},
+              ),
+
+              SizedBox(height: 16.h,),
+
+              RichText(
+                text: TextSpan(
+                  text: "Sudah punya akun? ",
+                  style: AppTextStyles.smallRegular.copyWith(
+                    color: AppColors.black,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: "Masuk",
+                      style: AppTextStyles.smallRegular.copyWith(
+                        color: AppColors.blue900
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          print("user masuk nih");
+                        }
+                    )
+                  ]
+                ),
+                
+
+              ),
                          
-          
-          
           
             ],
           ),
