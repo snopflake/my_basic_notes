@@ -46,12 +46,16 @@ class _AppTextFieldState extends State<AppTextField> {
             controller: widget.controller,
             keyboardType: widget.keyboardType,
             obscureText: widget.isPassword ? _obscureText : false,
-            style: AppTextStyles.baseRegular.copyWith(color: AppColors.blue800),
+            style: AppTextStyles.baseRegular.copyWith(
+              color: AppColors.blue800
+            ),
 
             decoration: InputDecoration(
               contentPadding: EdgeInsets.all(10.w.h),
               hintText: "Masukkan ${widget.label.toLowerCase()}",
-              hintStyle: AppTextStyles.baseRegular.copyWith(color: AppColors.blue700),
+              hintStyle: AppTextStyles.baseRegular.copyWith(
+                color: AppColors.blue700
+              ),
               fillColor: AppColors.blue50,
               filled: true,
           
