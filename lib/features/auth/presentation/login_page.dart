@@ -34,7 +34,15 @@ class _LoginPageState extends State<LoginPage> {
 
             SizedBox(height: 60.h,),
 
-            
+            Text(
+              "Nama Lengkap",
+              style: AppTextStyles.baseRegular,
+            ),
+
+            SizedBox(height: 12.h,),
+
+                       
+
 
 
           ],
