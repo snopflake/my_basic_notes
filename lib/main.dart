@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_basic_notes/config/injection.dart';
 import 'package:my_basic_notes/features/splash/presentation/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
+
+  // Firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // Dependencies Injection
+  await setupLocator();
+
+  // Run
   runApp(const MainApp());
+
 }
 
 class MainApp extends StatelessWidget {
