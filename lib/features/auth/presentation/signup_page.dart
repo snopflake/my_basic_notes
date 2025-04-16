@@ -58,7 +58,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 SizedBox(height: 60.h),
 
                 AppTextField(
-                  label: "Nama Lengkap",
+                  label: "E-Mail",
                   controller: emailController,
                 ),
 

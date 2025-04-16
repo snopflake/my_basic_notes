@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_basic_notes/config/injection.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_event.dart';
+import 'package:my_basic_notes/features/auth/presentation/signup_page.dart';
 import 'package:my_basic_notes/shared/app_colors.dart';
 import 'package:my_basic_notes/shared/app_text_styles.dart';
 import 'package:my_basic_notes/shared/widgets/app_button.dart';
@@ -19,18 +20,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   //Controller
-  final TextEditingController namaLengkapController = TextEditingController();
-  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController kataSandiController = TextEditingController();
-  final TextEditingController konfirmasiKataSandiController = TextEditingController();
 
   //Dispose
   @override
   void dispose() {
-    namaLengkapController.dispose();
-    usernameController.dispose();
+    emailController.dispose();
     kataSandiController.dispose();
-    konfirmasiKataSandiController.dispose();
     super.dispose();
   }
 
@@ -67,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 SizedBox(height: 38.h),
 
-                AppTextField(label: "Username", controller: usernameController),
+                AppTextField(label: "E-Mail", controller: emailController),
 
                 SizedBox(height: 24.h),
 
@@ -83,8 +80,8 @@ class _LoginPageState extends State<LoginPage> {
                 AppButton(
                   text: "Masuk", 
                   onPressed: () {
-                    final email = usernameController.text;
-                    final password = kataSandiController.text;
+                    final email = emailController.text.trim();
+                    final password = kataSandiController.text.trim();
 
                     context.read<AuthBloc>().add(
                       AuthLoginRequested(
@@ -112,7 +109,10 @@ class _LoginPageState extends State<LoginPage> {
                         recognizer:
                             TapGestureRecognizer()
                               ..onTap = () {
-                                print("user masuk nih");
+                                Navigator.pushReplacement(
+                                  context, 
+                                  MaterialPageRoute(builder: (context) 
+                                    => const SignUpPage()));
                               },
                       ),
                     ],
