@@ -8,11 +8,16 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this._firebaseAuth);
 
     @override
-  Future<void> signUp(String email, String password) async {
-    await _firebaseAuth.createUserWithEmailAndPassword(
-      email: email,
-      password: password
-    );
+  Future<void> signUp(String email, String username, String password) async {
+    try {
+      // Buat akun di firebase auth
+      final UserCredential = await FirebaseAuth.instance
+      .createUserWithEmailAndPassword(email: email, password: password);
+
+      // Simpan data tambahan (username & email) ke firestore
+    } catch (e) {
+
+    }
   }
 
   @override

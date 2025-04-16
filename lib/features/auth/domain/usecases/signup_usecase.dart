@@ -7,8 +7,8 @@ class SignupUsecase {
     this.repository
   );
 
-  Future<void> call(String email, String password) {
-    return repository.signUp(email, password);
+  Future<void> call(String email, String username, String password) {
+    return repository.signUp(email, username, password);
   }
 
 }
