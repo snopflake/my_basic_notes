@@ -6,15 +6,15 @@ import 'package:my_basic_notes/shared/app_text_styles.dart';
 import 'package:my_basic_notes/shared/widgets/app_button.dart';
 import 'package:my_basic_notes/shared/widgets/app_text_field.dart';
 
-class LoginPage extends StatefulWidget{
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget{
+  const SignUpPage({super.key});
 
   
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
 
   //Controller
   final TextEditingController namaLengkapController = TextEditingController();
@@ -46,26 +46,25 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 100.h,),
           
               Text(
-                "Masuk",
+                "Daftar",
                 style: AppTextStyles.h2Bold,
               ),
           
               SizedBox(height: 4.h,),
           
               Text(
-                "Selamat Datang Kembali!",
+                "Buat akun baru kamu!",
                 style: AppTextStyles.baseRegular,
               ),
           
-              SizedBox(height: 40.h,),
-
-              Image.asset(
-                "assets/images/logo_my_basicnotes.png",
-                width: 70.w,
-                height: 72.h,
+              SizedBox(height: 60.h,),
+          
+              AppTextField(
+                label: "Nama Lengkap", 
+                controller: namaLengkapController
               ),
-
-              SizedBox(height: 38.h,),
+          
+              SizedBox(height: 24.h,),
           
               AppTextField(
                 label: "Username", 
@@ -80,10 +79,18 @@ class _LoginPageState extends State<LoginPage> {
                 isPassword: true,
               ),
 
-              SizedBox(height: 10.h,),
+              SizedBox(height: 24.h,),
+
+              AppTextField(
+                label: "Konfirmasi Kata Sandi", 
+                controller: konfirmasiKataSandiController,
+                isPassword: true,
+              ),
+
+              SizedBox(height: 80.h,),
 
               AppButton(
-                text: "Masuk", 
+                text: "Daftar", 
                 onPressed: () {},
               ),
 
@@ -91,13 +98,13 @@ class _LoginPageState extends State<LoginPage> {
 
               RichText(
                 text: TextSpan(
-                  text: "Belum punya akun? ",
+                  text: "Sudah punya akun? ",
                   style: AppTextStyles.smallRegular.copyWith(
                     color: AppColors.black,
                   ),
                   children: [
                     TextSpan(
-                      text: "Dafrar",
+                      text: "Masuk",
                       style: AppTextStyles.smallRegular.copyWith(
                         color: AppColors.blue900
                       ),
