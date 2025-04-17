@@ -33,7 +33,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> login(String email, String password) async {
     await _firebaseAuth.signInWithEmailAndPassword(
-      email: email, 
+      email: email,
       password: password
     );
   }
