@@ -12,6 +12,7 @@ import 'package:my_basic_notes/shared/app_colors.dart';
 import 'package:my_basic_notes/shared/app_text_styles.dart';
 import 'package:my_basic_notes/shared/widgets/app_button.dart';
 import 'package:my_basic_notes/shared/widgets/app_text_field.dart';
+import 'package:my_basic_notes/shared/widgets/loading_dialog.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -46,9 +47,9 @@ class _SignUpPageState extends State<SignUpPage> {
 
         //Bloc Listener
         if (state is AuthLoading) {
-          //loading show
+          LoadingDialog.show(context);
         } else {
-          //loading hide
+          LoadingDialog.hide(context);
         }
 
         if (state is AuthSuccess) {
