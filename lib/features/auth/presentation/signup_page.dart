@@ -38,9 +38,7 @@ class _SignUpPageState extends State<SignUpPage> {
   //Build
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<AuthBloc>(),
-      child: Scaffold(
+    return Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 40.w),
@@ -138,7 +136,6 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

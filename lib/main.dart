@@ -17,11 +17,18 @@ void main() async {
 
   // Run
   runApp(
-    BlocProvider(
-      create: (context) => sl<AuthBloc>(), 
-      child: const MainApp()),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => sl<AuthBloc>()),
+        // Add more
+      ],
+      child: const MainApp(),
+    ),
   );
 }
+
+// Insight:
+// create: (_) artinya kamu menerima context, tapi kamu tidak memakainya _(makanya dikasih underscore)
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

@@ -34,9 +34,7 @@ class _LoginPageState extends State<LoginPage> {
   //Build
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<AuthBloc>(),
-      child: Scaffold(
+    return Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 40.w),
@@ -122,7 +120,6 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
