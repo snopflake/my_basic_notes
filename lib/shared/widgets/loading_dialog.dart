@@ -10,21 +10,24 @@ class LoadingDialog {
       context: context, 
       barrierDismissible: false, //user tidak bisa klik di luar modal
       builder:  (_) => Dialog(
-        backgroundColor: AppColors.orange500,
+        backgroundColor: AppColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12)
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const CircularProgressIndicator(),
-            SizedBox(height: 16.h),
-            Text(
-              "Tunggu sebentar yaa~",
-              style: AppTextStyles.baseRegular,
-            )
-          ],
-
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const CircularProgressIndicator(),
+              SizedBox(height: 12.h),
+              Text(
+                "Tunggu sebentar yaa~",
+                style: AppTextStyles.baseRegular,
+              )
+            ],
+          
+          ),
         ),
       )
     );
