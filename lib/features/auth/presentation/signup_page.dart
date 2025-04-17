@@ -5,7 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_basic_notes/config/injection.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_event.dart';
+import 'package:my_basic_notes/features/auth/presentation/bloc/auth_state.dart';
 import 'package:my_basic_notes/features/auth/presentation/login_page.dart';
+import 'package:my_basic_notes/homepage.dart';
 import 'package:my_basic_notes/shared/app_colors.dart';
 import 'package:my_basic_notes/shared/app_text_styles.dart';
 import 'package:my_basic_notes/shared/widgets/app_button.dart';
@@ -23,7 +25,8 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController kataSandiController = TextEditingController();
-  final TextEditingController konfirmasiKataSandiController = TextEditingController();
+  final TextEditingController konfirmasiKataSandiController =
+      TextEditingController();
 
   //Dispose
   @override
@@ -38,7 +41,30 @@ class _SignUpPageState extends State<SignUpPage> {
   //Build
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+
+        //Bloc Listener
+        if (state is AuthLoading) {
+          //loading show
+        } else {
+          //loading hide
+        }
+
+        if (state is AuthSuccess) {
+          Navigator.pushReplacement(context, 
+            MaterialPageRoute(builder: (_) => const HomePage()));
+        }
+
+        else if (state is AuthFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.message)),
+          );
+        }
+      },
+
+      // UI
+      child: Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 40.w),
@@ -55,10 +81,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                 SizedBox(height: 60.h),
 
-                AppTextField(
-                  label: "E-Mail",
-                  controller: emailController,
-                ),
+                AppTextField(label: "E-Mail", controller: emailController),
 
                 SizedBox(height: 24.h),
 
@@ -84,27 +107,30 @@ class _SignUpPageState extends State<SignUpPage> {
 
                 // Button
                 AppButton(
-                  text: "Daftar", 
+                  text: "Daftar",
                   onPressed: () {
                     final email = emailController.text.trim();
                     final username = usernameController.text.trim();
                     final password = kataSandiController.text.trim();
-                    final confirmPassword = konfirmasiKataSandiController.text.trim();
+                    final confirmPassword =
+                        konfirmasiKataSandiController.text.trim();
 
                     if (password != confirmPassword) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("kata sandi tidak cocok"))
+                        const SnackBar(content: Text("kata sandi tidak cocok")),
                       );
                       return;
                     }
 
                     context.read<AuthBloc>().add(
                       AuthSignUpRequested(
-                        email: email, 
-                        username: username, 
-                        password: password)
+                        email: email,
+                        username: username,
+                        password: password,
+                      ),
                     );
-                  }),
+                  },
+                ),
 
                 SizedBox(height: 16.h),
 
@@ -124,9 +150,11 @@ class _SignUpPageState extends State<SignUpPage> {
                             TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.pushReplacement(
-                                  context, 
-                                  MaterialPageRoute(builder: (context) 
-                                    => const LoginPage()));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const LoginPage(),
+                                  ),
+                                );
                               },
                       ),
                     ],
@@ -136,6 +164,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
         ),
-      );
+      ),
+    );
   }
 }

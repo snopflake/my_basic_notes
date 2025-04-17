@@ -5,7 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_basic_notes/config/injection.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_event.dart';
+import 'package:my_basic_notes/features/auth/presentation/bloc/auth_state.dart';
 import 'package:my_basic_notes/features/auth/presentation/signup_page.dart';
+import 'package:my_basic_notes/homepage.dart';
 import 'package:my_basic_notes/shared/app_colors.dart';
 import 'package:my_basic_notes/shared/app_text_styles.dart';
 import 'package:my_basic_notes/shared/widgets/app_button.dart';
@@ -34,7 +36,31 @@ class _LoginPageState extends State<LoginPage> {
   //Build
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+
+        // Bloc Listener
+        if (state is AuthLoading) {
+          //loading show
+        } else {
+          //loading hide
+        }
+
+        if (state is AuthSuccess) {
+          Navigator.pushReplacement(context, 
+            MaterialPageRoute(builder: (_) => const HomePage()));
+        }
+
+        else if (state is AuthFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.message)),
+          );
+        }
+
+      },
+
+      // UI
+      child: Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 40.w),
@@ -76,18 +102,15 @@ class _LoginPageState extends State<LoginPage> {
 
                 // Button
                 AppButton(
-                  text: "Masuk", 
+                  text: "Masuk",
                   onPressed: () {
                     final email = emailController.text.trim();
                     final password = kataSandiController.text.trim();
 
                     context.read<AuthBloc>().add(
-                      AuthLoginRequested(
-                        email: email,
-                        password: password
-                      ),
+                      AuthLoginRequested(email: email, password: password),
                     );
-                  }
+                  },
                 ),
 
                 SizedBox(height: 16.h),
@@ -108,9 +131,11 @@ class _LoginPageState extends State<LoginPage> {
                             TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.pushReplacement(
-                                  context, 
-                                  MaterialPageRoute(builder: (context) 
-                                    => const SignUpPage()));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SignUpPage(),
+                                  ),
+                                );
                               },
                       ),
                     ],
@@ -120,6 +145,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ),
-      );
+      ),
+    );
   }
 }
