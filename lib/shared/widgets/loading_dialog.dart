@@ -20,14 +20,18 @@ class LoadingDialog {
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: AppColors.white,
-            borderRadius: BorderRadius.circular(12)
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              width: 1.w,
+              color: AppColors.blue800
+            )
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const SpinKitCubeGrid(
-                color: AppColors.orange500,
-                size: 50,
+                color: AppColors.orange100,
+                size: 60,
               ),
               SizedBox(height: 12.h),
               Text(
