@@ -101,6 +101,22 @@ class _LoginPageState extends State<LoginPage> {
 
                 SizedBox(height: 10.h),
 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                       onPressed: () {}, 
+                        child: Text(
+                          "Lupa password?",
+                          style: AppTextStyles.smallRegular.copyWith(
+                            color: AppColors.blue900)
+                        )
+                      ),
+                    ],
+                  ),
+
+                SizedBox(height: 145.h,),
+
                 // Button
                 AppButton(
                   text: "Masuk",
@@ -124,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     children: [
                       TextSpan(
-                        text: "Dafrar",
+                        text: "Daftar",
                         style: AppTextStyles.smallRegular.copyWith(
                           color: AppColors.blue900,
                         ),
