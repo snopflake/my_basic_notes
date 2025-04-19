@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -13,13 +12,13 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> signUp(String email, String username, String password) async {
     try {
       // 1. Buat akun di firebase auth
-      final UserCredential = await FirebaseAuth.instance
+      final userCredential = await FirebaseAuth.instance
       .createUserWithEmailAndPassword(email: email, password: password);
 
       // 2. Simpan data tambahan (username & email) ke firestore
       await FirebaseFirestore.instance
         .collection('users')
-        .doc(UserCredential.user!.uid)
+        .doc(userCredential.user!.uid)
         .set({
           'username': username,
           'email': email,
