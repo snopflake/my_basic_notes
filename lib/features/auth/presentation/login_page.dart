@@ -7,7 +7,7 @@ import 'package:my_basic_notes/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_event.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_state.dart';
 import 'package:my_basic_notes/features/auth/presentation/signup_page.dart';
-import 'package:my_basic_notes/homepage.dart';
+import 'package:my_basic_notes/features/homepage/presentation/homepage.dart';
 import 'package:my_basic_notes/shared/app_colors.dart';
 import 'package:my_basic_notes/shared/app_text_styles.dart';
 import 'package:my_basic_notes/shared/widgets/app_button.dart';
