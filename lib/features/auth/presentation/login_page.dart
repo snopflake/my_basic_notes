@@ -7,7 +7,7 @@ import 'package:my_basic_notes/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_event.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_state.dart';
 import 'package:my_basic_notes/features/auth/presentation/signup_page.dart';
-import 'package:my_basic_notes/features/homepage/presentation/homepage.dart';
+import 'package:my_basic_notes/features/main/presentation/main_page.dart';
 import 'package:my_basic_notes/shared/app_colors.dart';
 import 'package:my_basic_notes/shared/app_text_styles.dart';
 import 'package:my_basic_notes/shared/widgets/app_button.dart';
@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
 
         if (state is AuthSuccess) {
           Navigator.pushReplacement(context, 
-            MaterialPageRoute(builder: (_) => const HomePage()));
+            MaterialPageRoute(builder: (_) => const MainPage()));
         }
 
         else if (state is AuthFailure) {
