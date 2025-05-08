@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_basic_notes/config/injection.dart';
+import 'package:my_basic_notes/core/routing/app_routes.dart';
+import 'package:my_basic_notes/core/routing/route_generator.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:my_basic_notes/features/main/presentation/bloc/main_bloc.dart';
-import 'package:my_basic_notes/features/splash/presentation/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,9 +44,12 @@ class MainApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(debugShowCheckedModeBanner: false, home: child);
+        return MaterialApp(
+          debugShowCheckedModeBanner: false, 
+          initialRoute: AppRoutes.splash,
+          onGenerateRoute: RouteGenerator.onGenerateRoute,
+          );
       },
-      child: const SplashPage(),
     );
   }
 }
