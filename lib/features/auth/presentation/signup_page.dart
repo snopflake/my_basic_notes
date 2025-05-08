@@ -53,9 +53,17 @@ class _SignUpPageState extends State<SignUpPage> {
           LoadingDialog.hide(context);
         }
 
-        // Routing -> MainPage
+        // Routing -> LoginPage
         if (state is AuthSuccess) {
-          Navigator.pushReplacementNamed(context, AppRoutes.main);
+          Navigator.pushReplacementNamed(context, AppRoutes.login);
+
+          Future.delayed(Duration.zero, () {
+            if (!mounted) return;
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("Berhasil mendaftar! Silahkan login.")),
+            );
+          });
         }
 
         else if (state is AuthFailure) {
