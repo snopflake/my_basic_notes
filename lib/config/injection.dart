@@ -5,6 +5,7 @@ import 'package:my_basic_notes/features/auth/data/repositories/auth_repository_i
 import 'package:my_basic_notes/features/auth/domain/usecases/login_usecase.dart';
 import 'package:my_basic_notes/features/auth/domain/usecases/signup_usecase.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:my_basic_notes/features/main/presentation/bloc/main_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -19,5 +20,7 @@ Future<void> setupLocator() async {
 
   //Bloc
   sl.registerFactory(() => AuthBloc(sl()));
+  sl.registerFactory(() => MainBloc());
+  
 
 }

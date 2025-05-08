@@ -13,12 +13,12 @@ import 'package:my_basic_notes/features/splash/presentation/splash_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    final isLoggedIn = GetIt.I<AuthBloc>().state is AuthSuccess;
+    // final isLoggedIn = GetIt.I<AuthBloc>().state is AuthSuccess;
 
-    // Middleware: blokir akses /main kalau user belum login
-    if (settings.name == AppRoutes.main && !isLoggedIn) {
-      return MaterialPageRoute(builder: (_) => const LoginPage());
-    }
+    // // Middleware: blokir akses /main kalau user belum login
+    // if (settings.name == AppRoutes.main && !isLoggedIn) {
+    //   return MaterialPageRoute(builder: (_) => const LoginPage());
+    // }
 
     switch (settings.name) {
       case AppRoutes.splash:

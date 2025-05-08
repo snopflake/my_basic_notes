@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
 
         // Routing -> MainPage
         if (state is AuthSuccess) {
-          Navigator.pushNamed(context, AppRoutes.main);
+          Navigator.pushReplacementNamed(context, AppRoutes.main);
         }
 
         else if (state is AuthFailure) {

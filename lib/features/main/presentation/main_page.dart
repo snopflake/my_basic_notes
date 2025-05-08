@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_basic_notes/features/homepage/presentation/homepage.dart';
 import 'package:my_basic_notes/features/main/presentation/bloc/main_bloc.dart';
 import 'package:my_basic_notes/features/main/presentation/widgets/bottom_navbar.dart';
+import 'package:my_basic_notes/features/profile/presentation/profile_page.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
-  final List<Widget> _pages = const [
-    // 0 = homepage
-    // 1 = profile page
+  List<Widget> get _pages => const [
+    HomePage(),
+    ProfilePage()
   ];
 
   @override
@@ -25,7 +27,9 @@ class MainPage extends StatelessWidget {
       ),
       
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {} //addNotes
+        onPressed: () => {
+          Navigator.pushNamed(context, '/addnotes')
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
      
