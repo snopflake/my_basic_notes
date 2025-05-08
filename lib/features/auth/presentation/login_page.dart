@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_basic_notes/config/injection.dart';
+import 'package:my_basic_notes/core/routing/app_routes.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_event.dart';
 import 'package:my_basic_notes/features/auth/presentation/bloc/auth_state.dart';
@@ -47,9 +48,9 @@ class _LoginPageState extends State<LoginPage> {
           LoadingDialog.hide(context);
         }
 
+        // Routing -> MainPage
         if (state is AuthSuccess) {
-          Navigator.pushReplacement(context, 
-            MaterialPageRoute(builder: (_) => const MainPage()));
+          Navigator.pushNamed(context, AppRoutes.main);
         }
 
         else if (state is AuthFailure) {
@@ -147,12 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                         recognizer:
                             TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const SignUpPage(),
-                                  ),
-                                );
+                                Navigator.pushReplacementNamed(context, AppRoutes.signup);
                               },
                       ),
                     ],
