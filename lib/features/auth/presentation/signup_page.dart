@@ -54,7 +54,7 @@ class _SignUpPageState extends State<SignUpPage> {
         }
 
         // Routing -> LoginPage
-        if (state is AuthSuccess) {
+        if (state is AuthSignUpSuccess) {
           Navigator.pushReplacementNamed(context, AppRoutes.login);
 
           Future.delayed(Duration.zero, () {
