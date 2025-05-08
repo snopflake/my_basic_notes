@@ -83,7 +83,7 @@ class _AppTextFieldState extends State<AppTextField> {
                     });
                   }, 
                   icon: SvgPicture.asset(
-                    _obscureText ? 'assets/icons/eye_off.svg' : 'assets/icons/eye_on.svg'
+                    _obscureText ? 'assets/icons/ic_eye_off.svg' : 'assets/icons/ic_eye_on.svg'
                   ))
                   : null,
             ),
